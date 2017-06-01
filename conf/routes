@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Assets.at(path="/public", file="index.html")
+GET     /swagger.json               controllers.ApiHelpController.getResources
+
+POST    /login                      controllers.SecurityController.login()
+POST    /logout                     controllers.SecurityController.logout()
+
+#POST    /todos                      controllers.TodoController.createTodo()
+
+GET     /todos/swagger.json         controllers.ApiHelpController.getResource(path = "/todos")
+GET     /todos                      controllers.TodoController.getAllTodos()
+
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
