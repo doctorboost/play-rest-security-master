@@ -14,6 +14,7 @@ import static play.libs.Json.toJson;
 import static play.mvc.Results.ok;
 
 @Api(value = "/todos", description = "description.....")
+@Security.Authenticated(Secured.class)
 public class TodoController extends Controller {
 
     @Inject FormFactory formFactory;
@@ -27,17 +28,17 @@ public class TodoController extends Controller {
         return ok(toJson(Todo.findByUser(SecurityController.getUser())));
     }
 
-//    public Result createTodo() {
-//        Form<Todo> form = formFactory.form(Todo.class).bindFromRequest();
-//        if (form.hasErrors()) {
-//            return badRequest(form.errorsAsJson());
-//        }
-//        else {
-//            Todo todo = form.get();
-//            todo.user = SecurityController.getUser();
-//            todo.save();
-//            return ok(toJson(todo));
-//        }
-//    }
+    public Result createTodo() {
+        Form<Todo> form = formFactory.form(Todo.class).bindFromRequest();
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
+        }
+        else {
+            Todo todo = form.get();
+            todo.user = SecurityController.getUser();
+            todo.save();
+            return ok(toJson(todo));
+        }
+    }
     
 }

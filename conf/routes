@@ -9,7 +9,7 @@ GET     /swagger.json               controllers.ApiHelpController.getResources
 POST    /login                      controllers.SecurityController.login()
 POST    /logout                     controllers.SecurityController.logout()
 
-#POST    /todos                      controllers.TodoController.createTodo()
+POST    /todos                      controllers.TodoController.createTodo()
 
 GET     /todos/swagger.json         controllers.ApiHelpController.getResource(path = "/todos")
 GET     /todos                      controllers.TodoController.getAllTodos()

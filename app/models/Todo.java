@@ -13,6 +13,30 @@ import java.util.List;
 @ApiModel("Todo")
 public class Todo extends Model {
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
@@ -26,7 +50,7 @@ public class Todo extends Model {
     @JsonIgnore
     @ApiModelProperty(hidden = true)
     public User user;
-    
+
     public Todo(User user, String value) {
         this.user = user;
         this.value = value;

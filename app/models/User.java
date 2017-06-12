@@ -21,7 +21,7 @@ public class User extends Model {
     public Long id;
 
     private String authToken;
-    
+
     @Column(length = 256, unique = true, nullable = false)
     @Constraints.MaxLength(256)
     @Constraints.Required
@@ -74,13 +74,13 @@ public class User extends Model {
         authToken = null;
         save();
     }
-    
-    
+
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnore
     public List<Todo> todos = new ArrayList<Todo>();
-    
-    
+
+
     public User() {
         this.creationDate = new Date();
     }
@@ -103,7 +103,7 @@ public class User extends Model {
     }
 
     public static Finder<Long, User> find = new Finder<>(User.class);
-    
+
     public static User findByAuthToken(String authToken) {
         if (authToken == null) {
             return null;

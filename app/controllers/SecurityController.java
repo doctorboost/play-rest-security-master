@@ -18,6 +18,7 @@ public class SecurityController extends Controller {
     public static final String AUTH_TOKEN = "authToken";
 
 
+    @Security.Authenticated(Secured.class)
     public static User getUser() {
         return (User)Http.Context.current().args.get("user");
     }
@@ -61,6 +62,22 @@ public class SecurityController extends Controller {
 
         @Constraints.Required
         public String password;
+
+        public String getEmailAddress() {
+            return emailAddress;
+        }
+
+        public void setEmailAddress(String emailAddress) {
+            this.emailAddress = emailAddress;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
     }
 
